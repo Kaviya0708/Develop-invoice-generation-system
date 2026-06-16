@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoice Generator</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+
+        input{
+            width: 250px;
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button{
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        #invoice{
+            margin-top: 20px;
+            border: 1px solid #000;
+            padding: 20px;
+            width: 400px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Invoice Generator</h2>
+
+    <input type="text" id="customerName" placeholder="Customer Name">
+    <br>
+
+    <input type="text" id="product" placeholder="Product Name">
+    <br>
+
+    <input type="number" id="quantity" placeholder="Quantity">
+    <br>
+
+    <input type="number" id="price" placeholder="Price">
+    <br><br>
+
+    <button onclick="generateInvoice()">
+        Generate Invoice
+    </button>
+
+    <div id="invoice">
+        <h3>Invoice</h3>
+
+        <p><b>Invoice No:</b> <span id="invoiceNo"></span></p>
+
+        <p><b>Customer:</b> <span id="customer"></span></p>
+
+        <p><b>Product:</b> <span id="productName"></span></p>
+
+        <p><b>Quantity:</b> <span id="qty"></span></p>
+
+        <p><b>Price:</b> ₹<span id="productPrice"></span></p>
+
+        <p><b>Total:</b> ₹<span id="total"></span></p>
+    </div>
+
+    <script>
+        function generateInvoice() {
+
+            const customer =
+                document.getElementById("customerName").value;
+
+            const product =
+                document.getElementById("product").value;
+
+            const quantity =
+                Number(document.getElementById("quantity").value);
+
+            const price =
+                Number(document.getElementById("price").value);
+
+            const total = quantity * price;
+
+            const invoiceNo =
+                "INV-" + Date.now();
+
+            document.getElementById("invoiceNo").innerText =
+                invoiceNo;
+
+            document.getElementById("customer").innerText =
+                customer;
+
+            document.getElementById("productName").innerText =
+                product;
+
+            document.getElementById("qty").innerText =
+                quantity;
+
+            document.getElementById("productPrice").innerText =
+                price;
+
+            document.getElementById("total").innerText =
+                total;
+
+            document.getElementById("invoice").style.display =
+                "block";
+        }
+    </script>
+
+</body>
+</html>
